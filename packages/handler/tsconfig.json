@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"noEmit": true,
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"lib": ["ESNext"],
+		"target": "ESNext",
+		"types": ["node"],
+		"moduleResolution": "nodenext",
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["src/*"]
+		}
+	}
+}
