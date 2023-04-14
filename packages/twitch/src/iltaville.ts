@@ -1,9 +1,9 @@
 import { App, Stack } from "aws-cdk-lib";
 import { LambdaIntegration, RestApi } from "aws-cdk-lib/aws-apigateway";
 import dotenv from "dotenv";
-import { createPolicies } from "~/aws/iam/policies";
-import { createLambda } from "~/aws/lambda/main";
-import { createNetwork } from "~/aws/network";
+import { createPolicies } from "./aws/iam/policies";
+import { createLambda } from "./aws/lambda/main";
+import { createNetwork } from "./aws/network";
 dotenv.config();
 
 const { AWS_ACCOUNT } = process.env;

@@ -1,27 +1,9 @@
 import { GetParameterCommand, SSMClient } from "@aws-sdk/client-ssm";
-import type { APIGatewayProxyEvent, APIGatewayProxyEventHeaders, APIGatewayProxyResult } from "aws-lambda";
+import type { APIGatewayProxyEvent, APIGatewayProxyEventHeaders } from "aws-lambda";
 import crypto from "crypto";
-import type { TwitchStreamOnlineEvent } from "~/@types/twitch";
+import type { TwitchStreamOnlineEvent } from "./@types/twitch";
 
 const ssmClient = new SSMClient({});
-
-export const success = <Output>(body: Output) =>
-	({
-		statusCode: 200,
-		body: JSON.stringify(body),
-	} as APIGatewayProxyResult);
-
-export const clientError = (message: string) =>
-	({
-		statusCode: 400,
-		body: JSON.stringify({ message }),
-	} as APIGatewayProxyResult);
-
-export const serverError = (message: string) =>
-	({
-		statusCode: 500,
-		body: JSON.stringify({ message }),
-	} as APIGatewayProxyResult);
 
 const getTwitchSubscriptionSecret = async () => {
 	try {

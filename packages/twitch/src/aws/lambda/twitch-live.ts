@@ -1,6 +1,7 @@
+import { clientError, serverError, success } from "@villehx/iv-shared";
 import { APIGatewayProxyHandler } from "aws-lambda";
-import type { TwitchStreamOnlineEvent } from "~/@types/twitch";
-import { clientError, serverError, success, twitchChallenge, verifyTwitchSignature } from "~/shared";
+import type { TwitchStreamOnlineEvent } from "../../@types/twitch";
+import { twitchChallenge, verifyTwitchSignature } from "../../shared";
 
 /**
  * Handler for Twitch Live events.
