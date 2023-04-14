@@ -27,6 +27,7 @@ const Twitch = {
 
 // Configuring Twitch lambdas
 Twitch.liveHandler.addToRolePolicy(TwitchPolicy.getIdAndSecret);
+Twitch.liveHandler.addToRolePolicy(TwitchPolicy.getSubscriptionSecret);
 
 const twitchApiResource = api.root.addResource("twitch");
 twitchApiResource.addResource("live").addMethod("POST", new LambdaIntegration(Twitch.liveHandler));

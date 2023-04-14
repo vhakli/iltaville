@@ -9,6 +9,9 @@
 		"dotenv": "^16.0.3",
 		"tsconfig-paths": "^4.2.0"
 	},
+	"dependencies": {
+		"@aws-sdk/client-ssm": "^3.312.0"
+	},
 	"lint-staged": {
 		"*.{js,jsx,ts,tsx,css,scss,md}": [
 			"prettier --write"

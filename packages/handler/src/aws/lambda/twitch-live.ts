@@ -1,23 +1,25 @@
 import { APIGatewayProxyHandler } from "aws-lambda";
-import { twitchChallenge } from "~/shared";
+import type { TwitchStreamOnlineEvent } from "~/@types/twitch";
+import { clientError, serverError, success, twitchChallenge, verifyTwitchSignature } from "~/shared";
 
 /**
  * Handler for Twitch Live events.
  */
 
-export const handler: APIGatewayProxyHandler = async ({ body, headers }) => {
-	if (!body) return { statusCode: 400, body: "Bad Request" };
+export const handler: APIGatewayProxyHandler = async (request) => {
 	try {
-		const data = JSON.parse(body);
-		console.log("data", data);
-		const challenge = twitchChallenge(headers, data);
-		if (challenge) {
-			return { statusCode: 200, body: challenge };
-		}
+		const validRequest = await verifyTwitchSignature(request);
+		if (!validRequest) return clientError("Bad request");
 
-		return { statusCode: 200, body: "OK" };
+		if (!request.body) return clientError("Bad request");
+		const body = JSON.parse(request.body) as TwitchStreamOnlineEvent;
+
+		const challenge = twitchChallenge(request.headers, body);
+		if (challenge) return { statusCode: 200, body: challenge };
+
+		return success({ message: "OK" });
 	} catch (error) {
 		console.error(error);
-		return { statusCode: 500, body: "Internal Server Error" };
+		return serverError("Internal server error");
 	}
 };
