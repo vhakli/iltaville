@@ -1,18 +1,32 @@
 import { App, Stack } from "aws-cdk-lib";
-import { Runtime } from "aws-cdk-lib/aws-lambda";
-import type { NodejsFunctionProps } from "aws-cdk-lib/aws-lambda-nodejs";
-import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
-import path from "path";
+import { LambdaIntegration, RestApi } from "aws-cdk-lib/aws-apigateway";
+import dotenv from "dotenv";
+import { createPolicies } from "~/aws/iam/policies";
+import { createLambda } from "~/aws/lambda/main";
+import { createNetwork } from "~/aws/network";
+dotenv.config();
 
-export const stack = new Stack(new App(), "IltavilleStack");
+const { AWS_ACCOUNT } = process.env;
+if (!AWS_ACCOUNT) throw new Error("Missing AWS_ACCOUNT environment variable");
 
-const lambda = (name: string, props?: NodejsFunctionProps) => {
-	return new NodejsFunction(stack, name, {
-		runtime: Runtime.NODEJS_18_X,
-		entry: path.join(__dirname, "lambda", `${name}.ts`),
-		bundling: { minify: true },
-		...props,
-	});
-};
+const stack = new Stack(new App(), "IltavilleStack", { env: { account: AWS_ACCOUNT, region: "eu-north-1" } });
 
-lambda("twitch-live");
+// API Gateway for receiving webhooks
+const api = new RestApi(stack, "IltavilleApi", { disableExecuteApiEndpoint: true });
+
+// Utilities
+const { TwitchPolicy } = createPolicies(stack);
+const lambda = createLambda(stack);
+// const network = createNetwork(stack, api);
+createNetwork(stack, api);
+
+// Twitch related handlers
+const Twitch = {
+	liveHandler: lambda("twitch-live"),
+} as const;
+
+// Configuring Twitch lambdas
+Twitch.liveHandler.addToRolePolicy(TwitchPolicy.getIdAndSecret);
+
+const twitchApiResource = api.root.addResource("twitch");
+twitchApiResource.addResource("live").addMethod("POST", new LambdaIntegration(Twitch.liveHandler));

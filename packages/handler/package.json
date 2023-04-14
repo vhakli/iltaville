@@ -5,7 +5,9 @@
 	},
 	"devDependencies": {
 		"@types/aws-lambda": "^8.10.114",
-		"aws-cdk-lib": "^2.73.0"
+		"aws-cdk-lib": "^2.73.0",
+		"dotenv": "^16.0.3",
+		"tsconfig-paths": "^4.2.0"
 	},
 	"lint-staged": {
 		"*.{js,jsx,ts,tsx,css,scss,md}": [

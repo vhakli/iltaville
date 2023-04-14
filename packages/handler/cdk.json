@@ -1,4 +1,4 @@
 {
-	"app": "npx ts-node src/iltaville.ts",
+	"app": "pnpm dlx ts-node src/iltaville.ts",
 	"watch": { "include": ["src"] }
 }
