@@ -1,0 +1,7 @@
+{
+	"name": "@villehx/iv-shared",
+	"main": "src/main.ts",
+	"devDependencies": {
+		"@types/aws-lambda": "^8.10.114"
+	}
+}
