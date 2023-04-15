@@ -1,7 +1,7 @@
 import { GetParameterCommand, SSMClient } from "@aws-sdk/client-ssm";
 import type { APIGatewayProxyEvent, APIGatewayProxyEventHeaders } from "aws-lambda";
 import crypto from "crypto";
-import type { TwitchStreamOnlineEvent } from "./@types/twitch";
+import type { TwitchStreamOnlineEvent } from "./@types/events";
 
 const ssmClient = new SSMClient({});
 

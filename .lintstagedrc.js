@@ -10,5 +10,5 @@ module.exports = {
 		const tsc = packages.map((pkg) => `tsc -p ./${pkg}/tsconfig.json`);
 		return [...tsc, `eslint --fix ${filenames.join(" ")}`];
 	},
-	"*.{js,jsx,ts,tsx,css,md,json}": ["prettier --write"],
+	"*.{js,jsx,ts,tsx,css,md,json,yaml}": ["prettier --write"],
 };
