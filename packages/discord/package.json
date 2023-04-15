@@ -1,8 +1,6 @@
 {
-	"name": "@villehx/iv-twitch",
+	"name": "@villehx/iv-discord",
 	"dependencies": {
-		"@aws-sdk/client-ssm": "^3.312.0",
-		"@types/aws-lambda": "^8.10.114",
 		"@villehx/eslint-config": "workspace:^",
 		"@villehx/iv-shared": "workspace:^",
 		"aws-cdk-lib": "^2.74.0"

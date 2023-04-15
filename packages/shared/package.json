@@ -1,7 +1,9 @@
 {
 	"name": "@villehx/iv-shared",
 	"main": "src/main.ts",
-	"devDependencies": {
-		"@types/aws-lambda": "^8.10.114"
+	"dependencies": {
+		"@types/aws-lambda": "^8.10.114",
+		"@villehx/eslint-config": "workspace:^",
+		"aws-cdk-lib": "^2.74.0"
 	}
 }

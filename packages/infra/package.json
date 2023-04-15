@@ -1,0 +1,6 @@
+{
+	"name": "@villehx/iv-infra",
+	"dependencies": {
+		"aws-cdk-lib": "^2.74.0"
+	}
+}
