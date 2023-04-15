@@ -1,6 +1,7 @@
 {
 	"name": "@villehx/iv-infra",
 	"dependencies": {
+		"@villehx/eslint-config": "workspace:^",
 		"aws-cdk-lib": "^2.74.0"
 	}
 }

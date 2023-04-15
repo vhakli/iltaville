@@ -56,6 +56,9 @@ importers:
 
   packages/infra:
     dependencies:
+      '@villehx/eslint-config':
+        specifier: workspace:^
+        version: link:../eslint-config
       aws-cdk-lib:
         specifier: ^2.74.0
         version: 2.74.0(constructs@10.1.309)
