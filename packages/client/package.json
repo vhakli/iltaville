@@ -1,3 +1,18 @@
 {
-	"name": "@villehx/iv-client"
+	"name": "@villehx/iv-client",
+	"scripts": {
+		"dev": "nodemon src/main.ts",
+		"build": "tsc"
+	},
+	"devDependencies": {
+		"@types/node": "^18.15.11",
+		"@types/ws": "^8.5.4",
+		"@villehx/eslint-config": "workspace:^",
+		"aws-cdk-lib": "^2.74.0",
+		"nodemon": "^2.0.22",
+		"typescript": "^5.0.4"
+	},
+	"dependencies": {
+		"ws": "^8.13.0"
+	}
 }

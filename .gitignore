@@ -3,3 +3,4 @@ cdk.out
 .vscode
 cdk.context.json
 .env
+dist

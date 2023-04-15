@@ -1,0 +1,4 @@
+{
+	"app": "pnpm ts-node cdk/client.ts",
+	"watch": { "include": ["cdk", "src"] }
+}

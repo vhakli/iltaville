@@ -1,0 +1,16 @@
+{
+	"exclude": ["cdk.out", "cdk"],
+	"compilerOptions": {
+		"strict": true,
+		"outDir": "dist",
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"lib": ["ESNext"],
+		"target": "ESNext",
+		"types": ["node"],
+		"module": "commonjs",
+		"moduleResolution": "nodenext",
+		"esModuleInterop": true,
+		"skipLibCheck": true
+	}
+}
