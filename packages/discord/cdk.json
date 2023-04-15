@@ -1,0 +1,4 @@
+{
+	"app": "pnpm ts-node src/discord.ts",
+	"watch": { "include": ["src"] }
+}

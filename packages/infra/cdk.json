@@ -1,0 +1,4 @@
+{
+	"app": "pnpm ts-node src/infra.ts",
+	"watch": { "include": ["src"] }
+}
